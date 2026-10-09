@@ -90,5 +90,10 @@ return true;
 // TODO (Checkpoint 4): implement append_line.
 bool append_line([[maybe_unused]] const std::string& path,
                  [[maybe_unused]] const std::string& text) {
-    return false;
+    std::ofstream file(path, std::ios::app);
+    if (!file.is_open()) {
+       return false;
+}
+    file << text << std::endl;
+    return file.good();
 }
